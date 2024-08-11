@@ -1,6 +1,7 @@
 def print_params(a=1, b='строка', c=True):
     print(a, b, c)
 
+
 def print_params1(**kwargs):
     print(kwargs)
 
@@ -11,6 +12,7 @@ def append_to_list(item, list_my=None):
     list_my.append(item)
     print(list_my)
 
+
 print('1.Функция с параметрами по умолчанию:')
 print_params()
 print_params(3, 12, 15)
@@ -18,7 +20,6 @@ print_params(a=23,c=17)
 print_params(c=15,b='Dima')
 print_params(b=25)
 print_params(c=[1,2,3])
-
 print()
 print('2.Распаковка параметров:')
 values_list = [True, 5, 'кролик']
