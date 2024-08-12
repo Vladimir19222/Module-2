@@ -18,7 +18,7 @@ def single_root_words(root_word, *other_words):
             if slovo in other_words[i].lower():
                 same_words.append(other_words[i])
     else:
-        same_words.append('Нет общего слова')
+        same_words.append('Нет однокоренных слов')
     return same_words
 
 
