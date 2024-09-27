@@ -59,12 +59,9 @@ class Circle(Figure):
                 self.__sides.append(1)
             print(self.__sides)
 
-    def get_sides(self):
-        return [*self.__sides]
-
     def get_square(self):
-        r = self.__sides[0] / (2 * pi)
-        return round((pi * r ** 2), 1)
+        _radius = self.__sides[0] / (2 * pi)
+        return round((pi * _radius ** 2), 1)
 
 
 class Triangle(Figure):
@@ -143,3 +140,5 @@ print(circle1.get_square())
 cube1 = Cube((222, 35, 130), 3, 15, 0, 9, 9, 9, 12, 9, 9, 9, 5, 9,)
 print(cube1.get_sides())
 
+circle1 = Circle((200, 200, 100), 12)
+print(circle1.get_square())
