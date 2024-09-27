@@ -4,7 +4,7 @@ from math import pi
 class Figure:
     sides_count = 0
 
-    def __init__(self, color, *sides, filled=False):
+    def __init__(self, color: tuple[int, int, int], *sides, filled=False):
         self.__sides = sides
         self.__color = color
         self.filled = filled
@@ -33,36 +33,60 @@ class Figure:
         if self.__is_valid_sides(sides):
             self.__sides = sides
 
+
     def get_sides(self):
         return [*self.__sides]
 
-    def __len__(self):
-        return sum(self.get_sides())
+    def __len__(self, *sides):
+        return sum([*self.__sides])
+
+    def is_valid_sides_count(self, args):
+        if len(args) != self.sides_count:
+            args = (1,) * self.sides_count
+        return args
 
 
 class Circle(Figure):
     sides_count = 1
 
-    def __init__(self, color, *side):
-        super().__init__(color, *side)
-        self.__radius = self.get_sides()[0] // 2
+    def __init__(self, color, *sides):
+        super().__init__(color, sides)
+        self.__sides = sides
+        # self.__color = color
+        if len(sides) != self.sides_count or 0 in self.__sides:
+            self.__sides = []
+            for i in range(0, self.sides_count):
+                self.__sides.append(1)
+            print(self.__sides)
+
+    def get_sides(self):
+        return [*self.__sides]
 
     def get_square(self):
-        return pi * self.__radius ** 2
+        r = self.__sides[0] / (2 * pi)
+        return round((pi * r ** 2), 1)
 
 
 class Triangle(Figure):
     sides_count = 3
 
     def __init__(self, color, *sides):
-        super().__init__(*sides)
-        self.__height = [self.sides_count ** 0.5 / 2 * i for i in self.get_sides()]
+        super().__init__(color, sides)
+        self.__sides = sides
+        # self.__color = color
+        if len(sides) != self.sides_count or 0 in self.__sides:
+            self.__sides = []
+            for i in range(0, self.sides_count):
+                self.__sides.append(1)
+            print(self.__sides)
 
-    def get_height(self, side=0):
-        return self.__height
+    def get_sides(self):
+        return [*self.__sides]
 
     def get_square(self):
-        return self.__height * self.get_sides()[0] / 2
+        p = sum([*self.__sides]) / 2
+        s = (p * (p - self.__sides[0]) * (p - self.__sides[1]) * (p - self.__sides[2])) ** 0.5
+        return round(s, 1)
 
 
 class Cube(Figure):
@@ -71,7 +95,7 @@ class Cube(Figure):
     def __init__(self, color, *sides):
         super().__init__(color, sides)
         self.__sides = sides
-        if len(sides) != self.sides_count:
+        if len(sides) != self.sides_count or 0 in self.__sides:
             a = self.__sides[0]
             self.__sides = []
             for i in range(0, self.sides_count):
@@ -81,18 +105,19 @@ class Cube(Figure):
         return [*self.__sides]
 
     def get_volume(self):
-        return int(self.__sides[0]) ** 3
+        a = (self.__sides[0])
+        return a ** 3
 
 
 circle1 = Circle((200, 200, 100), 10)  # (Цвет, стороны)
-cube1 = Cube((222, 35, 130), 6)
+cube1 = Cube((222, 35, 130), 9)
 # Проверка на изменение цветов:
-circle1.set_color(55, 66, 77) # Изменится
+circle1.set_color(55, 66, 77)  # Изменится
 print(circle1.get_color())
-cube1.set_color(300, 70, 15) # Не изменится
+cube1.set_color(300, 70, 15)  # Не изменится
 print(cube1.get_color())
 # Проверка на изменение сторон:
-cube1.set_sides(5, 3, 12, 4, 5) # Не изменится
+cube1.set_sides(5, 3, 12, 4, 5)  # Не изменится
 print(cube1.get_sides())
 circle1.set_sides(15) # Изменится
 print(circle1.get_sides())
@@ -100,3 +125,21 @@ print(circle1.get_sides())
 print(len(circle1))
 # Проверка объёма (куба):
 print(cube1.get_volume())
+
+print()
+print('Дополнительная проверка')
+
+tr = Triangle((155, 200, 100), 10, 11, 10)
+print(tr.get_square())
+tr = Triangle((155, 200, 100),  11, 10)
+print(tr.get_square())
+tr.set_color(160, 66, 77)
+# print(tr.get_color())
+tr.set_color(300, 66, 77)
+print(tr.get_color())
+tr.set_sides(5, 3, 12, 4, 5)  # Не изменится
+print(tr.get_sides())
+print(circle1.get_square())
+cube1 = Cube((222, 35, 130), 3, 15, 0, 9, 9, 9, 12, 9, 9, 9, 5, 9,)
+print(cube1.get_sides())
+
