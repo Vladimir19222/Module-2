@@ -30,7 +30,7 @@ class Cafe:
             stol = [x for x in self.tables if x.guest is None]
             if len(stol) > 0:
                 table = stol[0]
-            if table:
+            if table is not None:
                 table.guest = guest
                 guest.start()
                 print(f'{guest.name} сел(-а) за стол номер {table.number}')
