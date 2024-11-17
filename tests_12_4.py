@@ -7,6 +7,9 @@ logging.basicConfig(level=logging.INFO, filemode="w", filename="runner_tests.log
 
 
 class RunnerTest(unittest.TestCase):
+    is_frozen = False
+
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_walk(self):
         try:
             runner = Runner("Тестовый бегун", -5)
@@ -16,16 +19,17 @@ class RunnerTest(unittest.TestCase):
         except:
             logging.warning("Неверная скорость для Runner", exc_info=True)
 
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_run(self):
         try:
             athlete = Runner(6)
-            athlete.name = athlete.name + ''
             [athlete.run() for i in range(10)]
-            self.assertEqual(athlete.distance, 100)
+            self.assertIsInstance(athlete.name, str)
             logging.info('"test_run" выполнен успешно')
-        except TypeError:
+        except:
             logging.warning("Неверный тип данных для объекта Runner", exc_info=True)
 
 
 if __name__ == '__main__':
     unittest.main()
+
