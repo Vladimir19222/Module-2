@@ -1,0 +1,16 @@
+2024-11-17 11:46:48,398 | WARNING | Неверный тип данных для объекта Runner
+Traceback (most recent call last):
+  File "C:\Users\Администратор\PycharmProjects\pythonUnitTest\tests_12_4.py", line 22, in test_run
+    athlete.name = athlete.name + ''
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+2024-11-17 11:46:48,399 | WARNING | Неверная скорость для Runner
+Traceback (most recent call last):
+  File "C:\Users\Администратор\PycharmProjects\pythonUnitTest\tests_12_4.py", line 14, in test_walk
+    self.assertEqual(runner.distance, 50)
+  File "C:\Program Files\JetBrains\PyCharm Community Edition 2024.1.4\plugins\python-ce\helpers\pycharm\teamcity\diff_tools.py", line 33, in _patched_equals
+    old(self, first, second, msg)
+  File "C:\Users\Администратор\AppData\Local\Programs\Python\Python39\lib\unittest\case.py", line 837, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\Администратор\AppData\Local\Programs\Python\Python39\lib\unittest\case.py", line 830, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: -50 != 50
