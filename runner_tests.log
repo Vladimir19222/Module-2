@@ -1,11 +1,15 @@
-2024-11-17 11:46:48,398 | WARNING | Неверный тип данных для объекта Runner
+2024-11-17 15:21:00,120 | WARNING | Неверный тип данных для объекта Runner
 Traceback (most recent call last):
-  File "C:\Users\Администратор\PycharmProjects\pythonUnitTest\tests_12_4.py", line 22, in test_run
-    athlete.name = athlete.name + ''
-TypeError: unsupported operand type(s) for +: 'int' and 'str'
-2024-11-17 11:46:48,399 | WARNING | Неверная скорость для Runner
+  File "C:\Users\Администратор\PycharmProjects\pythonUnitTest\tests_12_4.py", line 27, in test_run
+    self.assertIsInstance(athlete.name, str)
+  File "C:\Users\Администратор\AppData\Local\Programs\Python\Python39\lib\unittest\case.py", line 1260, in assertIsInstance
+    self.fail(self._formatMessage(msg, standardMsg))
+  File "C:\Users\Администратор\AppData\Local\Programs\Python\Python39\lib\unittest\case.py", line 676, in fail
+    raise self.failureException(msg)
+AssertionError: 6 is not an instance of <class 'str'>
+2024-11-17 15:21:00,122 | WARNING | Неверная скорость для Runner
 Traceback (most recent call last):
-  File "C:\Users\Администратор\PycharmProjects\pythonUnitTest\tests_12_4.py", line 14, in test_walk
+  File "C:\Users\Администратор\PycharmProjects\pythonUnitTest\tests_12_4.py", line 17, in test_walk
     self.assertEqual(runner.distance, 50)
   File "C:\Program Files\JetBrains\PyCharm Community Edition 2024.1.4\plugins\python-ce\helpers\pycharm\teamcity\diff_tools.py", line 33, in _patched_equals
     old(self, first, second, msg)
