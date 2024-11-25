@@ -56,5 +56,11 @@ async def send_calories(message, state):
     await state.finish()
 
 
+@dp.message_handler()  # иное сообщение
+async def all_message(message):
+    print(message.text)
+    await message.answer(message.text)
+
+
 if __name__ == "__main__":
     executor.start_polling(dp, skip_updates=True)
