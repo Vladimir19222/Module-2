@@ -58,7 +58,7 @@ async def send_calories(message, state):
 
 @dp.message_handler()  # иное сообщение
 async def all_message(message):
-    print(message.text)
+    print(f"Мы получили сообщение: {message.text}")
     await message.answer(message.text)
 
 
